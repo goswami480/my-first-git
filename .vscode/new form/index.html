@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+    <style>
+         .container{
+            justify-content: center;
+            align-items: center;
+            border: 1px solid  black;
+            background-color:blanchedalmond;
+            width: 250px;
+            height:40vh;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            margin-top: 120px;
+            padding:8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login Page</h2>
+    <form>
+        <label>Emai:-</label><br>
+        <input type="email" id="mail">
+        <br><br>
+        <label>Password:-</label><br>
+        <input type="password" id="password">
+        <br><br>
+        <input type="button" value="Submit" onclick="login()">
+    </form>
+</div>
+<script>
+    // function login(){
+  
+
+    //    var email = document.getElementById("mail").value;
+    //    var pass = document.getElementById("password").value;
+    //    let val =true;
+    //    console.log(email,pass);
+    //    let storage=localStorage;
+    //    for(let i =0; i<storage.length; i++ ){
+    //     var value = JSON.parse(storage.getItem(storage.key(i)));
+    //    var data =value;
+    //    console.log(data);
+    //    for(let key in  data){
+    //   var  emaildata = data[key].mail
+    //   var passwordata=  data[key].password
+    //   console.log("passwordata>>",passwordata)
+    //   console.log("emaildata>>>>",emaildata);
+    //     }
+    //    if(email=="" && pass==""){
+    //    alert("please fill the inputs")
+    //    val = true;}
+    
+
+    //    else if(email!==emaildata && pass !==passwordata){
+    //        alert('please fill the valid information');
+    //        val = false;
+    //        console.log(val);
+    //    }else if(email == emaildata && pass == passwordata) {
+    //     alert ( 'you are logged in' );
+    //     val = true;  
+    //     window.location.assign("test.html");
+
+    //    }}};
+    
+    
+       function login(){
+  
+
+  var email = document.getElementById("mail").value;
+  var pass = document.getElementById("password").value;
+  let val =true;
+  console.log(email,pass);
+  let storage=localStorage.getItem("info");
+        console.log(storage);
+  var data = JSON.parse(storage);
+
+let filterarray=data.filter((element)=>{
+    return element.mail===email && element.password===pass})
+
+console.log(filterarray);
+  
+if(!filterarray){
+      alert ('Invalid Username or Password')
+  }
+  else{
+      
+      alert ("You are Logged In!");
+      window.location.assign("test.html")
+    };
+
+
+  
+//   let new_array = data.find((element)=>element.mail===email && element.password===pass);
+//   console.log(new_array );
+//   if(!new_array){
+//       alert ('Invalid Username or Password')
+//   }
+//   else{
+      
+//       alert ("You are Logged In!");
+//       window.location.assign("test.html")
+//     };
+  
+   if(email=="" && pass==""){
+  alert("please fill the inputs")
+   val = true;
+
+
+ }
+       
+       }
+  
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Array methods</h2>
+    <p id="demo"></p>
+    <script>
+        const arr=["apple","mango","lichi","blackberry","banana"]
+        //push() method is used to add new item into the array 
+    //    arr.push("blueberry")
+        // arr.pop()
+        //arr.shift()
+        //arr.unshift("graphes")
+        //delete arr[1]   
+        // const arr1=[5,6,7,8];
+        // const result= arr.concat(arr1)
+        // arr.copyWithin(3,0)
+    //    let size= arr.length
+   //document.getElementById("demo").innerHTML=arr.toString();
+//    let arr2= arr.at(4)
+                 //JOIN METHOD
+  // document.getElementById("demo").innerHTML=arr.join("+");
+                //INDEXOF METHOD
+   //document.getElementById("demo").innerHTML=arr.indexOf("mango");
+                //LASTINDEXOF METHOD
+//   document.getElementById("demo").innerHTML=arr.lastIndexOf("banana");
+                //INCLUDE METHOD
+   //document.getElementById("demo").innerHTML=arr.includes("mango");
+                    //SORT METHOD
+   //document.getElementById("demo").innerHTML=arr.sort();
+                    //Reverse Method
+  // document.getElementById("demo").innerHTML=arr.reverse();
+                        //toSorted method
+   //document.getElementById("demo").innerHTML=arr.toSorted();
+                         //toReversed method
+//    document.getElementById("demo").innerHTML=arr.toReversed();
+                    //slice methodThe slice() method creates a new array.
+                    //The slice() method does not remove any elements from the source array.
+                    
+    // document.getElementById("demo").innerHTML=arr.slice(1);           
+                    //splice method
+            // arr.splice(2,0,"kiwi","orange")
+                //flat method its concate the sub array values in the single array
+            //  const arr1=[[1,2],[3,4],[5,6]]
+            //         arr.flat()
+                        //toSpliced method
+           // document.getElementById("demo").innerHTML=arr.toSpliced(1,2)
+           const arr1=[4,5,6,8,77];
+           let new_array= arr1.map(function(value,index){
+            return {index,value:value*value}
+           })
+       
+            console.log(new_array);
+          
+    </script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #tble td {
+            /* display:flex;
+            flex-direction: row; */
+            padding:10px;
+            margin:20px;
+            border:2px  solid black; 
+            
+            }      
+            #data td{
+            border:2px solid black;
+            margin:5px;
+            }
+            
+        
+        
+    </style>
+        <script>
+            function set(){
+    const name = document.getElementById("name").value;
+    const lname = document.getElementById("lastname").value;
+    const mail = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    
+    
+    var userKey = 'user_' + Date.now(); 
+    var userData = [name,lname,mail,phone];
+    console.log(userData);
+    
+    
+    
+   
+    localStorage.setItem(userKey, JSON.stringify(userData));
+    
+    alert("User has been added");
+    window.location.reload();
+}
+function get(){
+    var storage=localStorage;
+    //get the table with the id
+    var table=document.getElementById('tble');  
+    //for loop used for  iterating over items in the localstorage
+    for (var i = 0; i < storage.length; i++) {
+        var value = JSON.parse(storage.getItem(storage.key(i)));
+        ;       
+      //get the values in the table row and cells
+        var row = table.insertRow(-1);
+     
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+         var cell4 = row.insertCell(3);
+         var cell5 = row.insertCell(4);
+        
+        cell1.innerHTML = value[0]
+        cell2.innerHTML = value[1];
+        cell3.innerHTML = value[2];
+        cell4.innerHTML =value[3];
+        cell5.innerHTML= '<button onclick="deleteData(this)">Delete</button>'+'<button type="button" onclick="EditData(this)">Edit</button>'; 
+}   
+   
+}       
+           
+             function dlte(){
+                //delete the values from the local storage using their keys
+                var storage=localStorage
+                for( let i =0; i<storage.length ;i++){
+                    storage.clear(storage.key(i))
+             }
+            window.location.reload();
+            }
+           
+
+
+            function EditData(button) {
+               
+                var storage=localStorage;
+    let row = button.parentNode.parentNode;
+   
+
+     
+         let name =row.cells[0].textContent;
+        let lname =row. cells[1].textContent;
+        let mail =row. cells[2].textContent;
+        let phone = row.cells[3].textContent;
+            
+        var fname=document.getElementById("name").value=name;      
+        var ltname=document.getElementById("lastname").value=lname;
+        var email=document.getElementById("email").value=mail;
+        var Phone=document.getElementById("phone").value=phone;     
+        
+        name.innerHTML=fname;
+        lname.innerHTML=ltname;
+        mail.innerHTML=email;
+        phone.innerHTML=Phone;
+    };
+     function update(button){
+        let row = button.parentNode.parentNode;
+
+       var key= event.target.id;
+       console.log(key);
+       var data={"Name": document.getElementById("name").value, "Last Name": document.getElementById("lastname").value,"Email":document.getElementById("email").value,"Phone":document.getElementById("phone").value};
+       let name =row. cells[0].data;
+        let lname =row. cells[1].data;
+        let mail =row. cells[2].data;
+        let phone = row.cells[3].data;
+
+     }
+        
+            
+     
+       
+    
+
+function deleteData(button) {
+    //using  parent node to access the parent of the clicked element and then accessing the rows by tag name tr .
+    var row = button.parentNode.parentNode;
+    var storage = localStorage;
+
+    //remove the record from the table and the local storage only the selected row data
+    var keyToRemove;
+    for (var i = 0; i < storage.length; i++) {
+        var value = JSON.parse(storage.getItem(storage.key(i)));
+        if (value[0] == row.cells[0].innerHTML &&
+            value[1] == row.cells[1].innerHTML &&
+            value[2] == row.cells[2].innerHTML &&
+            value[3] == row.cells[3].innerHTML) {
+            keyToRemove = storage.key(i);
+            break;
+        }
+    }
+    storage.removeItem(keyToRemove);
+
+    // Remove the row from the table
+    row.parentNode.removeChild(row);    
+}
+
+
+
+            
+        </script>
+    </head>
+    <body onload="get()">
+        <form action="" method="post" >
+            <input type="text" id="name" placeholder="enter your name" name="name1">
+            <br>
+            <input type="text" id="lastname" placeholder="enter your lastname" name="lastname1">
+            <br>
+            <input type="text" id="email" placeholder="enter your email" name="email1">
+            <br>
+            <input type="text" id="phone" placeholder="enter your phoneo" name="phone1">
+            <br>
+            <!-- <input type="button" value="submit" onclick="print()"> -->
+            <input type="button" value="set data" onclick="set()">
+            <!-- <input type="button" value="Get item" onclick="get()"> -->
+                 
+            <input type="button" value="delete data" onclick="dlte()">
+              <input type="button" value="update data" onclick="update()">
+            <table style="background-color:yellowgreen;border: 1px soid black"; id="tble" >
+                <tr id="data"> 
+                    <td>Name</td>
+                    <td>Lastname</td>
+                    <td>Email</td>
+                    <td>Phone</td>
+                    <td>Action</td>
+                    
+                </tr>
+                
+            </table>
+        </form>
+    </body>
+    </html>

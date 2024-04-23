@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type ="text/javascript">
+        //  var name = "male";
+        //  var name1="female";
+         const type = "male"; //male/female
+        //  if (type=="male"){
+        //     document.write("husan kumar, himanshu");
+        //  }else if (type=="female"){
+        //     document.write("usha,pavneet")
+        //  }else {
+        //     document.write('no one')
+        //  }
+
+         // 
+
+         const myFamily = {
+            male: {
+                member1: "Husan Pal",
+                member2: "Himanshu",
+                member3: "Amit",
+                member4: "Suri"
+            },
+            female: {
+                member1: "Usha",
+                member2: "Pavneet"
+            },
+         }
+         if(type=="male" || type == "female"){
+            var obj = myFamily[type]
+                // document.write(obj.member1)
+                // document.write(obj["member1"])
+                // document.write("<br>")
+                // document.write(obj.member2)
+                // document.write("<br>")
+                // document.write(obj.member3)
+                // console.log("Surinder", "\n", "kumar");
+
+            for (const key in obj) {
+                    console.log(key);
+                    console.log(obj[key]);
+                    document.write(obj[key])
+
+            }
+         }else if(type=="female"){
+            // document.write(myFamily[type])
+            // var obj = myFamily[type]
+            // for (const key in obj) {
+            //         // console.log(key);
+            //         // console.log(obj[key]);
+            //         document.write(obj[key])
+
+            // }
+         }else{
+            document.write("wrong type");
+         }
+        
+        //  const testObj = {
+        //     key1: {
+        //         value1: "chandpur",
+        //         value2: {
+        //             address: "PO Sialba, majri"
+        //         }
+        //     }
+        //  }
+        // var key1 = 
+        // document.write(key1.value2)
+        
+        // json object data type
+        // Syntax of a object
+        // { key: value }
+        // { key: value, key2: value2 }
+        // { key: value, key2: value2, key3: {key: value} }
+        // { key: value, key2: value2, key3: {key: value, key2: value} }
+        // how to display value from a json object
+        // dot operator / array syntax
+        // const a = { key: "skfasjd" }
+        // console.log(a.key);
+        // console.log(a["key"]);
+
+        const b = { 
+            key: 'jas',
+            key2: 'sam' , 
+            key3: {
+                key: 'arjun', 
+                key2: "Sialba"
+            } 
+        }
+        console.log (b.key3.key2)
+        // Ternary operator
+
+        // const age = condition : first value ? last value
+
+        const typeF = "tree";
+
+        if(typeF == "tree"){
+
+        }else if( typeF == "fruit"){
+
+        }else{
+
+        }
+
+        const check = typeF == "tree" ? true: false;
+        console.log("ternary check: ", check);
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

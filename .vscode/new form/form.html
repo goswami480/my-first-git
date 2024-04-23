@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            justify-content: center;
+            align-items: center;
+            border: 1px solid  black;
+            background-color:blanchedalmond;
+            width: 400px;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            padding:8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <form>
+        <h2>Login Page</h2>
+        <label>Name:-</label><br>
+        <input type="text" id="name"><br><br>
+        <label>User Name:-</label><br>
+        <input type="text"  id="uname"><br><br>
+        <label>Email:-</label><br>
+        <input type="text" id="email"><br><br>
+        <label>Phone:-</label><br>
+        <input type="text" id="phone"><br><br>
+        <label>Password:-</label><br>
+        <input type="password"  id="pass"><br><br>
+        <label>Confirm Password:-</label><br>
+        <input type="password"  id="c_pass"><br><br>
+        <input type="checkbox"  id="checkbox">
+        <p>I have accept all the terms and conditions</p><br><br>
+        <input type="button" value="Submit" onclick="val()">
+        
+    </form>
+</div>
+<script>
+    let info=[];
+    function  val(){
+        let name=document.getElementById("name").value;
+        let uname=document.getElementById("uname").value;
+        let  email=document.getElementById("email").value;
+        let phone = document.getElementById("phone").value;
+        let pass=document.getElementById("pass").value;
+        let c_pass=document.getElementById("c_pass").value;
+        const emailValidation = "@gmail.com";
+        let val = false
+        const   numberRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[\d])(?=.*[@#$%^&*]).*$/;   
+        if(document.getElementById("checkbox").checked){
+           if (name===""||uname===""||email==""||phone ===""||pass===""||c_pass==""){
+               alert("Please fill out all fields");
+               val = true;
+           }
+           if(!numberRegex.test(pass)){
+            alert("Password doesn't  contain Capital letters or special characters");
+            val = true;
+           }
+
+            if(!email.includes(emailValidation)){
+                alert("Invalid Email ID");
+            val = true;
+
+           }
+           else if(pass!=c_pass) {
+               alert('Passwords do not match');
+            val = true;
+
+           } else if(!email.includes(emailValidation)) {
+
+            alert('Invalid Email ID')
+            val = true;
+
+           } else {
+             var obj={'name':name,'userid':uname,'mail':email,"password":c_pass,'mobno':phone};
+             if(!val)
+             {info.push(obj);
+             localStorage.setItem("info",JSON.stringify(info));
+             console.log(typeof info);
+             
+             window.location.assign('index.html');}
+           }
+            
+    }
+}
+    </script>
+</body>
+</html>

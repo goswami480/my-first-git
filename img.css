@@ -1,0 +1,16 @@
+img {
+   height:250px;
+   width:250px;
+   padding: 5px;
+   margin:5px;
+   border:2px solid greenyellow;
+   border-radius: 30%;
+   box-shadow: 20px 20px 50px 20px;
+   transition: transform;
+}
+
+img .hover{
+     box-sizing: border-box;
+     transform: rotate();
+     
+}

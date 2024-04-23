@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let count = 0;
+for (let i = 0; i < 10; i += 2) {
+    count++;
+}
+console.log(count);
+let sum = 0;
+for (let i = 1; i <= 10; i++) {
+    if (i % 2 === 0) {
+        continue;
+    }
+    sum += i;
+}
+console.log(sum);
+let p = false;
+let q = true;
+let r = false;
+let result = (p || q) && (q || r) && !(p && r);
+console.log(result);
+var values=["Three","two","one"]; var ans=values.shift(); document.writeln(ans);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

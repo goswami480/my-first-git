@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object</title>
+    <style>
+         #table td {
+            /* display:flex;
+            flex-direction: row; */
+            padding:10px;
+            margin:20px;
+            border:2px  solid black; 
+           
+         }      
+         #data td{
+            border:2px solid black;
+            margin:5px;
+         }
+         
+        
+      
+    </style>
+    <script>
+        function print(){
+           
+            
+            var allcookies = document.cookie;
+            var cookiearray = allcookies.split(';');
+  
+    for (var i = 0; i < cookiearray.length; i++) {
+    
+         var name = cookiearray[i].split("=")[0];
+         var key = cookiearray[i].split("=")[0];
+    }
+      
+         var keyBreak = name.split("_")[1];
+        var unique_number= parseInt(keyBreak) +1;
+        var new_key =  "key_"+ unique_number;
+        console.log('>>unique_number',unique_number);
+        var name = document.getElementById('name').value;
+         var lastname = document.getElementById('lastname').value;
+         var email = document.getElementById("email").value;
+         var phone = document.getElementById("phone").value;
+       
+            if(keyBreak == undefined){
+            
+            document.cookie = "name_1=" + encodeURIComponent(name) + ";";
+           document.cookie = "lastname_1=" + encodeURIComponent(lastname) + ";";
+            document.cookie = "email_1=" +escape(email) + ";";
+            document.cookie = "phone_1=" + encodeURIComponent(phone) + ";";
+
+            }else{
+                        
+            document.cookie = "name_"+unique_number +"="+ encodeURIComponent(name) + ";";
+            document.cookie = "lastname_"+unique_number +"="+ encodeURIComponent(lastname) + ";";
+            document.cookie = "email_"+unique_number +"="+escape(email) + ";";
+            document.cookie = "phone_"+unique_number +"="+ encodeURIComponent(phone) + ";";
+            }
+ window.location.reload()
+
+}
+       
+       
+function ReadCookie() {
+            var allCookies = document.cookie;
+            var table = document.getElementById("table");
+            var newRow = table.insertRow();
+            var cookieArray = allCookies.split(';');
+            for (var i = 0; i < cookieArray.length; i++) {
+                var value = cookieArray[i].split("=")[1]
+              console.log("value>>>",value);
+                    
+                    if(allCookies==''){
+   
+                         var cell1 = newRow.insertCell(0);
+   
+                          cell1.innerHTML = "data not found";
+
+                            }  else {
+                                var cell1 = newRow.insertCell()
+                                 cell1.innerHTML =value;
+                                if (name.startsWith("name_")) {
+                                    var cell = newRow.insertCell(-1);
+                                     cell.innerHTML = value;
+                                 }
+
+                                if ((i + 1) % 4 === 0 && i !== 0) {
+                                                  // var buttonCell = newRow.insertCell(); // New cell for buttons
+
+                // var editButton = document.createElement("button");
+                // editButton.innerHTML = "Edit";
+                // editButton.setAttribute("onclick", "editData(this)");
+                // //  buttonCell.appendChild(editButton);
+
+                // var deleteButton = document.createElement("button");
+                // deleteButton.innerHTML = "Delete";
+                // deleteButton.setAttribute("onclick", "deleteData(this)");
+                //  buttonCell.appendChild(deleteButton);
+
+                                        newRow = table.insertRow(); 
+                                     }
+                                    }}}
+
+      function deleteCookie(event) {
+ var con = confirm("Are you sure you want to delete cookies?");
+    if (con) {
+        var allcookies = document.cookie;
+        var cookiearray = allcookies.split(';');
+
+       
+        for (var i = 0; i < cookiearray.length; i++) {
+            var name_ = cookiearray[i].split('=')[0];
+           document.cookie=name_+"=; expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/"
+        
+        
+    }
+    window.location.reload();
+}}
+
+    
+    </script>
+</head>
+<body onload="ReadCookie()">
+    <form action="" method="post"  >
+        <input type="text" id="name" placeholder="enter your name" name="name1">
+        <br>
+        <input type="text" id="lastname" placeholder="enter your lastname" name="lastname1">
+        <br>
+        <input type="text" id="email" placeholder="enter your email" name="email1">
+        <br>
+        <input type="text" id="phone" placeholder="enter your phoneo" name="phone1">
+        <br>
+        <input type="button" value="submit" onclick="print()">
+        <!-- <input type="button" value="Get Cookie" onclick="ReadCookie()"> -->
+        <p id="demo"></p>
+        <input type="button" value="Delete cookie" onclick="deleteCookie()">
+    </form>
+    <table style="background-color:yellowgreen;border: 1px soid black"; id="table" >
+    <tr id="data">
+        <td>Name</td>
+        <td>Lastname</td>
+        <td>Email</td>
+        <td>Phone</td>
+        
+    </tr>
+ </table>
+
+</body>
+</html>

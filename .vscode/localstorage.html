@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #tble td {
+           /* display:flex;
+           flex-direction: row; */
+           padding:10px;
+           margin:20px;
+           border:2px  solid black; 
+          
+        }      
+        #data td{
+           border:2px solid black;
+           margin:5px;
+        }
+        
+       
+     
+   </style>
+    <script>
+        function print(){
+           const uname= document.getElementById("name");
+         const lname=   document.getElementById("lastname");
+         const mail=   document.getElementById("email");
+          const Phone=  document.getElementById("phone");
+            
+            const value=uname.value;
+            const value1=lname.value;
+            const value2=mail.value;
+            const value3=Phone.value;
+            
+            localStorage.setItem("name",value); 
+            localStorage.setItem("lastname",value1); 
+            localStorage.setItem("email",value2); 
+            localStorage.setItem("phone",value3); 
+            window.location.reload();;
+        }
+        function get(){
+        var storage = localStorage;
+       
+             const table=document.getElementById("tble");
+             var newRow=table.insertRow(-1);
+        const key=["name","lastname", "email", "phone"];
+        for(var i= 0 ;i<key.length;i++){
+            var keys=key[i];
+            var values=storage.getItem(keys)
+        
+           
+            if(values!=null){
+               var newcell1=newRow.insertCell();
+               newcell1.innerHTML=values;
+            }
+        }
+            if(values==null){
+                var newcell1=newRow.insertCell(0);
+                newcell1.innerHTML='empty';
+        }
+    }
+        function dlte(){
+            var storage  =localStorage;
+            storage.clear()
+            location.reload();
+         
+        }
+          //get items   
+        //    const name= localStorage.getItem("name");
+        //     document.write("name>",name +' '),"\n";
+        //  const lsname=   localStorage.getItem("lastname");
+        //  document.write("lsname>",lsname +" "),"\n" ;
+        //     const em=localStorage.getItem("email");
+        //     document.write("em>",em +" "),'\n';
+        //    const ph= localStorage.getItem("phone");
+        //     document.write('ph>',ph +" "),'\n';
+        //     const storage=localStorage;
+        //    // const storagearray=storage.split(";");
+        
+
+        //     const table=document.getElementById("tble");
+        //     var newRow=table.insertRow(-1);
+        //     for(var i = 0;i<storage.length;i++){
+        //         var value=storage.getItem(storage.key(i));
+        //         if (localStorage==" "){
+                 
+        //     var newCell1=newRow.insertCell(0);
+        //     newCell1.innerHTML="data not found";
+        //         }else{
+        //     var newRow=table.insertRow(-1);
+        //     var newCell1=newRow.insertCell(0);
+            
+        //     newCell1.innerHTML=value;
+        //         }
+        // }
+    
+    
+    
+    
+    </script>
+</head>
+<body onload="get()">
+    <form action="" method="post"  >
+        <input type="text" id="name" placeholder="enter your name" name="name1">
+        <br>
+        <input type="text" id="lastname" placeholder="enter your lastname" name="lastname1">
+        <br>
+        <input type="text" id="email" placeholder="enter your email" name="email1">
+        <br>
+        <input type="text" id="phone" placeholder="enter your phoneo" name="phone1">
+        <br>
+        <input type="button" value="submit" onclick="print()">
+        <!-- <input type="button" value="Get Cookie" onclick="ReadCookie()"> -->
+        <p id="demo"></p>
+        <input type="button" value="get data    " onclick="get()">
+        <input type="button" value="delete data" onclick="dlte()">
+        <table style="background-color:yellowgreen;border: 1px soid black"; id="tble" >
+            <tr id="data"> 
+                 <td>Name</td>
+                <td>Lastname</td>
+                <td>Email</td>
+                <td>Phone</td>
+                
+             </tr>
+            
+         </table>
+    </form>
+</body>
+</html>

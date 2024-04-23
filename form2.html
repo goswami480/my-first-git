@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form2</title>
+    <style>
+         #table td {
+            /* display:flex;
+            flex-direction: row; */
+            padding:10px;
+            margin:20px;
+            border:2px  solid black; 
+           
+         }      
+         #data td{
+            border:2px solid black;
+            margin:5px;
+         }
+         
+        
+      
+    </style>
+    <script>
+          function print(){
+           
+            
+           var allcookies = document.cookie;
+           var cookiearray = allcookies.split(';');
+ 
+   for (var i = 0; i < cookiearray.length; i++) {
+   
+         var name = cookiearray[i].split("=")[0];
+        var key = cookiearray[i].split("=")[0];
+        
+   } 
+     
+        var keyBreak = key.split("_")[1];
+       var unique_number= parseInt(keyBreak) +1;
+       var new_key =  "key_"+ unique_number;
+       console.log("unique_number>",unique_number);
+    
+       var name = document.getElementById('name').value;
+        var lastname = document.getElementById('lastname').value;
+        var email = document.getElementById("email").value;
+        var phone = document.getElementById("phone").value;
+        
+      
+           if(keyBreak == undefined){
+           
+           document.cookie = "name_1=" + encodeURIComponent(name) + ";";
+          document.cookie = "lastname_1=" + encodeURIComponent(lastname) + ";";
+           document.cookie = "email_1=" +escape(email) + ";";
+           document.cookie = "phone_1=" + encodeURIComponent(phone) + ";";
+
+           }else{
+                          
+           document.cookie = "name_"+unique_number +"="+ encodeURIComponent(name) + ";";
+           document.cookie = "lastname_"+unique_number +"="+ encodeURIComponent(lastname) + ";";
+           document.cookie = "email_"+unique_number +"="+escape(email) + ";";
+           document.cookie = "phone_"+unique_number +"="+ encodeURIComponent(phone) + ";";
+          
+           }
+            // document.getElementById("").value=document.cookie
+                window.location.reload()
+
+}
+// function updt(){
+//            var cookiearray = allcookies.split(';');
+ 
+// //    for (var i = 0; i < cookiearray.length; i++) {
+   
+        
+//     var allcookies = document.cookie;
+// //         // var name = cookiearray[i].split("=")[0];
+//         var key = cookiearray.split("=")[0];
+// //    }
+//     var keyBreak = key.split("_")[1];
+//        var unique_number= parseInt(keyBreak) +1;
+//        var new_key =  "key_"+ unique_number;
+       
+//         var name = document.getElementById("name").value;
+//         var lastname = document.getElementById("lastname").value;
+//         var email = document.getElementById("email").value;
+//         var phone = document.getElementById("phone").value;
+//            document.cookie = "name_" +unique_number+"="+ encodeURIComponent(name) + ";";
+//            document.cookie = "lastname_" +unique_number+"="+ encodeURIComponent(lastname) + ";";
+//            document.cookie = "email_" +unique_number+"="+escape(email) + ";";
+//            document.cookie = "phone_" +unique_number+"="+ encodeURIComponent(phone) + ";";
+//         var cells = document.getElementsByTagName("td");
+//         cells[0].innerHTML = name        
+//         cells[1].innerHTML = lastname
+//         cells[2].innerHTML = email+unique_number;
+//         cells[3].innerHTML = phone+unique_number;
+
+       
+ 
+// }
+function updt(){
+    var allcookies = document.cookie;
+    var cookiearray = allcookies.split(';');
+    var key;
+    
+    for (var i = 0; i < cookiearray.length; i++) {
+        if(cookiearray[i].indexOf("=") !== -1){
+            key = cookiearray[i].split("=")[0].trim();
+            break;
+        }
+    }
+    
+    if(key) {
+        var keyBreak = key.split("_")[1];
+        var unique_number = parseInt(keyBreak) + 1;
+
+        var name = document.getElementById("name").value;
+        var lastname = document.getElementById("lastname").value;
+        var email = document.getElementById("email").value;
+        var phone = document.getElementById("phone").value;
+
+        document.cookie = "name_" + unique_number + "=" + encodeURIComponent(name) + ";";
+        document.cookie = "lastname_" + unique_number + "=" + encodeURIComponent(lastname) + ";";
+        document.cookie = "email_" + unique_number + "=" + escape(email) + ";";
+        document.cookie = "phone_" + unique_number + "=" + encodeURIComponent(phone) + ";";
+
+        var cells = document.getElementsByTagName("td");
+        cells[0].innerHTML = name + unique_number;
+        cells[1].innerHTML = lastname + unique_number;
+        cells[2].innerHTML = email + unique_number;
+        cells[3].innerHTML = phone + unique_number;
+    }
+}
+
+function ReadCookie() {
+    var allcookies = document.cookie;
+    var table = document.getElementById("table");
+
+    var cookiearray = allcookies.split(';');
+    var newRow = table.insertRow(table.rows.length);
+
+    for (var i = 0; i < cookiearray.length; i++) {
+        var value = cookiearray[i].split('=')[1];
+
+        if (document.cookie == '') {
+            var cell1 = newRow.insertCell(0);
+            cell1.innerHTML = "data not found";
+        } else {
+            var cell = newRow.insertCell();
+            cell.innerHTML = value;
+
+            // If it's the last cell in the row, add buttons
+            if ((i + 1) % 4 === 0 && i!==0 ) {
+                var buttoncell=newRow.insertCell()
+                buttoncell.innerHTML=
+                '<button id="editbutton " onclick="editData(this)">Edit</button>'+ 
+				'<button onclick="deleteData(this)">Delete</button>'; 
+			
+  
+                
+                newRow = table.insertRow();
+            }
+        }
+    }
+    window.location.reload()
+}
+
+
+       
+
+
+            
+
+
+           
+          
+// function editData(button) {
+//     let row = button.parentNode.parentNode;
+//    
+//     var name = document.getElementById("name").value;
+//     var lastname = document.getElementById("lastname").value;
+//         console.log("lastname>>",lastname);
+//     var email = document.getElementById("email").value;
+//     console.log("email>>>",email);
+//     var phone = document.getElementById("phone").value;
+//         console.log("phone>>",phone);
+
+   
+    
+// }
+
+
+    function editData(button) {
+        let row = button.parentNode.parentNode;
+        var cells = row.getElementsByTagName("td");
+       
+        var name_ = cells[0].innerHTML;
+        var lastname_ = cells[1].innerHTML;
+        var email_ = cells[2].innerHTML;
+        var phone_ = cells[3].innerHTML;
+
+        document.getElementById("name").value = name_
+        document.getElementById("lastname").value = lastname_
+        document.getElementById("email").value = email_;
+        document.getElementById("phone").value = phone_
+        console.log(name_,lastname_,email_,phone_)
+    }
+
+    
+
+
+
+
+
+
+           function deleteData(button) { 
+            let row = button.parentNode.parentNode;
+        
+        var allcookies = document.cookie;
+           var cookiearray = allcookies.split(';');
+ 
+   for (var i = 0; i < cookiearray.length; i++) {
+   
+    var key = cookiearray[i].split("=")[0];
+    var keyBreak = key.split("_")[1];
+       var unique_number= parseInt(keyBreak) +1;
+       var new_key =  "key_"+ unique_number;
+    
+            var name_ = cookiearray[0]
+            var lastname_ = cookiearray[0]
+            var email_ = cookiearray[0]
+            var phone_ = cookiearray[0]
+            document.cookie = name_ + unique_number+"=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/";
+            document.cookie = lastname_ + unique_number+"=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/";
+            document.cookie = email_ +unique_number+ "=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/";
+            document.cookie = phone_+ unique_number+"=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/";
+    console.log("document.cookie>>",document.cookie);
+			row.parentNode.removeChild(row);
+            console.log("row>>>",row); 
+
+         }
+           }
+
+function deleteCookie(event) {
+    var con = confirm("Are you sure you want to delete cookies?");
+    if (con) {
+        var allcookies = document.cookie;
+        var cookiearray = allcookies.split(';');
+        for (var i = 0; i < cookiearray.length; i++) {
+            var name_ = cookiearray[i].split('=')[0] 
+            console.log("value is : " + name_);
+            document.cookie = name_ + "=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/";
+        }
+    }
+    window.location.reload();
+}
+
+
+
+             
+        
+    </script>
+</head>
+<body onload="ReadCookie()">
+    <form action="" method="post">
+        <input type="text" id="name" placeholder="enter your name" name="name1">
+        <br>
+        <input type="text" id="lastname" placeholder="enter your lastname" name="lastname1">
+        <br>
+        <input type="text" id="email" placeholder="enter your email" name="email1">
+        <br>
+        <input type="text" id="phone" placeholder="enter your phoneo" name="phone1">
+        <br>
+        <input type="button" value="submit" onclick="print()">
+        <input type="button" value="update" onclick="updt()">
+        <!-- <input type="button" value="Get Cookie" onclick="ReadCookie()"> -->
+        <p id="demo"></p>
+        <input type="button" value="Delete cookie" onclick="deleteCookie(event)">
+    </form>
+    <table style="background-color:yellowgreen;border: 1px soid black"; id="table" >
+    <tr id="data"> 
+         <td>Name</td>
+        <td>Lastname</td>
+        <td>Email</td>
+        <td>Phone</td>
+        <td>Action</td>
+        
+     </tr>
+    
+ </table>
+
+</body>
+</html>

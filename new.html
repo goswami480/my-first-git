@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>revision file</title>
+    <script>
+        const mysmb=Symbol("keys")
+        const juser={
+            name:"mohan",
+            "fullname":"Mohan Kumar",
+           [mysmb]:"kumar",
+            age:22,
+            city:"chandigarh",
+        }
+        console.log(juser["age"])
+        console.log(juser["fullname"])
+        console.log(juser)
+        console.log(juser[mysmb])
+        // juser.city="Mohali"
+        // Object.freeze(juser);//to make object immutable 
+        // juser.city="Delhi"; //this will throw error as the
+        // console.log(juser.city);
+
+        // juser.greeting= function(){
+        //     console.log("hlo js users");
+        // }
+        // juser.greetingTwo= function(){
+        //     console.log(`hlo js users,${this.city}`);
+        // }
+       
+        // console.log(juser.greetingTwo());
+        // function display(){
+        //     const  name=document.getElementById("name").value;
+        //     const mail=document.getElementById( "mail").value;
+        //     // document.cookie="name1"+"="+encodeURIComponent(name);
+        //     // document.cookie="email1"+"="+ escape(mail);
+            
+        //     // alert("Your data is submitted successfully")
+        //     // console.log(document.cookie)
+        //     const Keys="user_"+Date.now();
+        //     const data=[name,mail]
+
+        //     localStorage.setItem( Keys,JSON. stringify(data) );
+           
+        //    window.location.reload()
+        // }
+
+    </script>
+</head>
+<body>
+    <!-- <label>Name:-</label>
+    <input type="text" id="name" placeholder="enter your name"/><br/>
+    <br>
+    <label>Email:-</label>
+    <input type="text" name="" id="mail" placeholder="enter your email">
+    <br><br>
+    <input type="button" value="Submit" onclick="display()"/> -->
+
+    
+</body>
+</html>
